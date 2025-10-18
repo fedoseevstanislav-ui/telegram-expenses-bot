@@ -15,6 +15,7 @@ GOOGLE_CREDENTIALS_JSON = os.environ['GOOGLE_CREDENTIALS_JSON']
 USER_MAPPING = {
     598771387: "Стас",
     1192201108: "Иргуст"
+    841899396: "Коля"
 }
 # ===========================================
 
