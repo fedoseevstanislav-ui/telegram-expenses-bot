@@ -38,6 +38,10 @@ def get_or_create_worksheet_by_chat_id(chat_id):
     return worksheet
 
 def parse_single_expense(line):
+    """Распознаёт сумму в формате 0.5 или 0,5 (обязательно с нулём перед разделителем)"""
+    # Заменяем запятую на точку для единообразия
+    line = line.replace(',', '.')
+    # Регулярка: одна или более цифр, потом (опционально) точка и цифры
     match = re.match(r'^(\d+(?:\.\d+)?)\s*[-–—]\s*(.+)$', line.strip())
     if match:
         return float(match.group(1)), match.group(2).strip()
