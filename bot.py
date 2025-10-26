@@ -82,7 +82,10 @@ def handle_message(message):
         row = [date, name, amount, desc, current_group_name]
         worksheet.append_row(row)
         print(f"✅ Добавлена трата в группу ID {message.chat.id}: {name} — {amount} — {desc}")
-
 if __name__ == '__main__':
     print("✅ Бот запущен на сервере (работает по ID группы).")
     bot.polling(none_stop=True)
+@bot.edited_message_handler(func=lambda message: True)
+def handle_edited_message(message):
+    """Обрабатывает отредактированные сообщения как новые"""
+    handle_message(message)
